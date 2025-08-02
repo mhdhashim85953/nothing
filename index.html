@@ -14,6 +14,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      width: 100vw
       overflow: hidden;
     }
     #app {
@@ -50,61 +51,74 @@
   <!-- Content dynamically inserted by JavaScript -->
 </div>
 
-<audio id="sound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
-
+<audio id="sound" src="dim.mp3"></audio>
+<audio id="soundj" src="job.mp3"></audio>
+<audio id="sound1" src="bruh.mp3"></audio>
 <script>
   const app = document.getElementById("app");
   const sound = document.getElementById("sound");
-
+ const sound1= document.getElementById("sound1");
+  const soundj = document.getElementById("soundj");
   let tapCount = 0;
 
   function playSound() {
     sound.play();
   }
+  function playSound1() {
+    sound1.play();
+  }
+  function playSoundj() {
+    soundj.play();
+  }
 
   function page1() {
     app.innerHTML = `
-      <h2>What's your glorious name, oh my twin? 😎</h2>
+      <h2>What's your glorious name, my twin? 😎</h2>
       <input type="text" placeholder="Type something useless...Like ur name">
     `;
-    setTimeout(page2, 4000);
-    playSound();
+    setTimeout(page2, 3000);
+    
   }
 
   function page2() {
+    playSound();
     app.innerHTML = `
-      <h2>Do you really want to continue?</h2>
+      <h2>Do you really want to continue?👀</h2>
       <button onclick="page3()">No</button>
       <button onclick="page0()">Yes</button>
     `;
-    playSound();
+   
   }
   function page0() {
+    playSound();
     app.innerHTML = `
-      <h2>Oh, you said yes? Then let's go on! 😏</h2>
+      <h2>Oh yes? Then let's go on!💅 </h2>
       <button onclick="page4()">Next</button>
     `;
-    playSound();
+  
   }
 
   function page3() {
+    playSound();
     app.innerHTML = `
       <h2>Oh, you said No? Anyway let's move on! 😏</h2>
       <button onclick="page4()">Next</button>
     `;
-    playSound();
+   
   }
 
   function page4() {
+    playSound();
     tapCount = 0;
     app.innerHTML = `
       <h2>TAP THE BUTTON UNTIL SOMETHING HAPPENS</h2>
-      <button onclick="tapLogic()">Please dont touch me  </button>
+      <button onclick="tapLogic()">Please dont touch me 🙏 </button>
     `;
-    playSound();
+    
   }
 
   function tapLogic() {
+    playSound();
     tapCount++;
     if (tapCount === 7) {
       pagePuzzle();
@@ -119,10 +133,11 @@
       <br><br>
       <button onclick= "checkPuzzle()" >Edge</button>
     `;
-    playSound();
+    
   }
 
   function checkPuzzle() {
+    playSound()
     const ans = document.getElementById("answer").value;
     if (ans.trim() === "incorrect") {
       page5();
@@ -132,19 +147,21 @@
   }
 
   function page5() {
+    playSound1();
     app.innerHTML = `
-      <h2>🎉 You've completed... nothing bruh.</h2>
+      <h2>🎉 You've completed... nothing bruh🎉.</h2>
       <button onclick="page6()">Click to Celebrate</button>
     `;
-    playSound();
+  
   }
 
   function page6() {
+   playSoundj();
     app.innerHTML = `
-      <h2> Here's your reward:</h2>
+      <h2> Here's your reward ☠️:</h2>
       <img src="fr.jpeg" style="width: 100%; border-radius: 20px;">
     `;
-    playSound();
+   
   }
 
   // Start the journey
