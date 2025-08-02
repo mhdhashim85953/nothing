@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Useless Project</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #app {
+      text-align: center;
+      padding: 20px;
+      border-radius: 20px;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 400px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff7675;
+      color: white;
+      cursor: pointer;
+      margin: 10px;
+    }
+    button:hover {
+      background-color: #d63031;
+    }
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body style="font-size: 24px; padding:40px;">
+<div id="app">
+  <!-- Content dynamically inserted by JavaScript -->
+</div>
+
+<audio id="sound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
+
+<script>
+  const app = document.getElementById("app");
+  const sound = document.getElementById("sound");
+
+  let tapCount = 0;
+
+  function playSound() {
+    sound.play();
+  }
+
+  function page1() {
+    app.innerHTML = `
+      <h2>What's your glorious name, oh my twin? 😎</h2>
+      <input type="text" placeholder="Type something useless...Like ur name">
+    `;
+    setTimeout(page2, 4000);
+    playSound();
+  }
+
+  function page2() {
+    app.innerHTML = `
+      <h2>Do you really want to continue?</h2>
+      <button onclick="page3()">No</button>
+      <button onclick="page0()">Yes</button>
+    `;
+    playSound();
+  }
+  function page0() {
+    app.innerHTML = `
+      <h2>Oh, you said yes? Then let's go on! 😏</h2>
+      <button onclick="page4()">Next</button>
+    `;
+    playSound();
+  }
+
+  function page3() {
+    app.innerHTML = `
+      <h2>Oh, you said No? Anyway let's move on! 😏</h2>
+      <button onclick="page4()">Next</button>
+    `;
+    playSound();
+  }
+
+  function page4() {
+    tapCount = 0;
+    app.innerHTML = `
+      <h2>TAP THE BUTTON UNTIL SOMETHING HAPPENS</h2>
+      <button onclick="tapLogic()">Please dont touch me  </button>
+    `;
+    playSound();
+  }
+
+  function tapLogic() {
+    tapCount++;
+    if (tapCount === 7) {
+      pagePuzzle();
+    }
+  }
+
+  function pagePuzzle() {
+    app.innerHTML = `
+      <h2>🔐 Solve this to proceed: What is 2 + 2 * 2?
+      (any answer is incorrect)</h2>
+      <input id="answer" type="text" placeholder="What have you got">
+      <br><br>
+      <button onclick= "checkPuzzle()" >Edge</button>
+    `;
+    playSound();
+  }
+
+  function checkPuzzle() {
+    const ans = document.getElementById("answer").value;
+    if (ans.trim() === "incorrect") {
+      page5();
+    } else {
+      alert("Elite ball knowledge required");
+    }
+  }
+
+  function page5() {
+    app.innerHTML = `
+      <h2>🎉 You've completed... nothing bruh.</h2>
+      <button onclick="page6()">Click to Celebrate</button>
+    `;
+    playSound();
+  }
+
+  function page6() {
+    app.innerHTML = `
+      <h2> Here's your reward:</h2>
+      <img src="fr.jpeg" style="width: 100%; border-radius: 20px;">
+    `;
+    playSound();
+  }
+
+  // Start the journey
+  page1();
+</script>
+</body>
+</html>
